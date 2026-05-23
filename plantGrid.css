@@ -1,0 +1,65 @@
+.plants-grid {
+ display: grid;
+ grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+ gap: 1.5rem;
+ max-width: 1400px; margin: 0 auto;
+ }
+ .plant-card {
+ background: white;
+ border: 1.5px solid rgba(149,213,178,0.25);
+ border-radius: var(--radius);
+ overflow: hidden;
+ cursor: pointer;
+ transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+ box-shadow: 0 2px 12px rgba(26,61,43,0.06);
+ position: relative;
+ }
+ .plant-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); border-color: var(--green-bright); }
+ .plant-card-img {
+ width: 100%; height: 180px;
+ display: flex; align-items: center; justify-content: center;
+ font-size: 4.5rem;
+ position: relative; overflow: hidden;
+ background-size: cover !important;
+ background-position: center !important;
+ }
+ .plant-card-img img {
+ width: 100%; height: 100%; object-fit: cover;
+ transition: transform 0.4s ease;
+ }
+ .plant-card:hover .plant-card-img img { transform: scale(1.07); }
+ .plant-card-emoji { z-index: 1; }
+ .plant-card-body { padding: 1rem 1.2rem 1.2rem; }
+ .plant-card-name {
+ font-family: 'Playfair Display', serif;
+ font-size: 1.1rem; font-weight: 700;
+ color: var(--green-deep); margin-bottom: 2px;
+ }
+ .plant-card-sci {
+ font-size: 0.78rem; color: var(--text-muted);
+ font-style: italic; margin-bottom: 8px;
+ }
+ .plant-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
+ .tag {
+ padding: 2px 10px; border-radius: 20px;
+ font-size: 0.72rem; font-weight: 600; letter-spacing: 0.3px;
+ }
+ .tag-tree { background: #d8f3dc; color: var(--green-mid); }
+ .tag-herb { background: #fff3cd; color: #856404; }
+ .tag-shrub { background: #cfe2ff; color: #084298; }
+ .tag-vine { background: #f8d7da; color: #842029; }
+ .tag-crop { background: #e2d9f3; color: #432874; }
+ .tag-flower { background: #fce4ec; color: #880e4f; }
+ .tag-medicinal { background: #e8f5e9; color: #1b5e20; }
+ .tag-fruit { background: #fff8e1; color: #f57f17; }
+ .plant-card-desc { font-size: 0.83rem; color: var(--text-muted); line-height: 1.55; }
+ .plant-card-badge {
+ position: absolute; top: 10px; right: 10px;
+ background: rgba(255,255,255,0.85);
+ backdrop-filter: blur(6px);
+ border-radius: 8px;
+ padding: 2px 8px;
+ font-size: 0.72rem; font-weight: 600;
+ color: var(--green-mid);
+ border: 1px solid rgba(82,183,136,0.3);
+ }

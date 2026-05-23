@@ -1,0 +1,41 @@
+nav {
+    position: sticky; 
+    top: 0; 
+    z-index: 999;
+    background: rgba(26,61,43,0.97);
+    backdrop-filter: blur(12px);
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between;
+    padding: 0 2.5rem;
+    height: 64px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.25);
+ }
+ .nav-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem; font-weight: 900;
+    color: var(--green-light);
+    letter-spacing: -0.5px;
+    display: flex; align-items: center; gap: 0.5rem;
+ }
+ .nav-brand span {
+    color: var(--gold); 
+}
+ .nav-links { 
+    display: flex; gap: 2rem; list-style: none; }
+ .nav-links a {
+ color: rgba(255,255,255,0.8);
+ text-decoration: none;
+ font-size: 0.9rem; font-weight: 500;
+ transition: color 0.2s;
+ cursor: pointer;
+ }
+ .nav-links a:hover, .nav-links a.active { color: var(--green-light); }
+ .nav-counter {
+ font-family: 'DM Mono', monospace;
+ font-size: 0.8rem; color: var(--green-light);
+ background: rgba(82,183,136,0.15);
+ padding: 4px 12px; border-radius: 20px;
+ border: 1px solid rgba(82,183,136,0.3);
+ }
+ .nav-toggle { display: none; cursor: pointer; color: white; font-size: 1.5rem; }

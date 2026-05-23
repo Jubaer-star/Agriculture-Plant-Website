@@ -1,0 +1,81 @@
+body.dark {
+ --cream: #0f1a14;
+ --white: #1a2820;
+ --text-dark: #e8f5e9;
+ --text-mid: #b2dfdb;
+ --text-muted: #80cbc4;
+ --green-pale: #1b3a2d;
+ --shadow: 0 4px 24px rgba(0,0,0,0.4);
+ --shadow-lg: 0 16px 64px rgba(0,0,0,0.5);
+ background: #0f1a14;
+ }
+ body.dark nav { background: rgba(10,26,18,0.98); }
+ body.dark .plant-card { background: #152318; border-color: #2a4a35; }
+ body.dark .plant-card-name { color: var(--green-light); }
+ body.dark .plant-card-body { background: #152318; }
+ body.dark .modal { background: #152318; }
+ body.dark .modal-info-card { background: #1e3028; border-color: #2a4a35; }
+ body.dark .form-card { background: #152318; }
+ body.dark .form-group input, body.dark .form-group select, body.dark .form-group textarea { background: #1e3028; border-color: #2a4a35; color: var(--text-dark); }
+ body.dark .counter-box { background: #152318; border-color: #2a4a35; }
+ body.dark .modal-tab { color: #80cbc4; }
+ body.dark .care-step { background: #1e3028; }
+ body.dark .cure-step { background: #2d1515; }
+ body.dark .prod-card { background: #1e3028; border-color: #2a4a35; }
+ body.dark .variety-card { background: #1e3028; border-color: #2a4a35; }
+ body.dark .variety-card.best { background: #2a2010; border-color: #c9a227; }
+ body.dark #encyclopedia { background: #111d17 !important; }
+ body.dark .search-input-wrap input { background: #1e3028; border-color: #2a4a35; color: #e8f5e9; }
+ body.dark .filter-dropdown { background: #1e3028; border-color: #2a4a35; color: #e8f5e9; }
+ body.dark .page-btn { background: #1e3028; border-color: #2a4a35; color: #e8f5e9; }
+ body.dark #register { background: #0f1a14; }
+ body.dark #contact { background: #111d17 !important; }
+ body.dark .data-panel { background: #152318; border-color: #2a4a35; }
+ body.dark .data-table th { background: #1e3028; color: #95d5b2; }
+ body.dark .data-table td { border-color: #2a4a35; color: #e8f5e9; }
+ body.dark .data-table tr:nth-child(even) td { background: #1a2c22; }
+ body.dark .login-card { background: #152318; }
+ body.dark .login-card input { background: #1e3028; border-color: #2a4a35; color: #e8f5e9; }
+ /* DARK MODE TOGGLE */
+ .dark-toggle {
+ display: inline-flex;
+ flex-direction: row;
+ align-items: center;
+ gap: 8px;
+ cursor: pointer;
+ color: rgba(255,255,255,0.9);
+ font-size: 0.9rem;
+ font-family: 'DM Sans', sans-serif;
+ font-weight: 500;
+ user-select: none;
+ line-height: 1;
+ /* reset button defaults */
+ background: transparent;
+ border: none;
+ outline: none;
+ padding: 4px 6px;
+ border-radius: 8px;
+ }
+ .dark-toggle:hover { color: #fff; background: rgba(255,255,255,0.08); }
+ .toggle-track {
+ width: 42px;
+ height: 24px;
+ background: rgba(255,255,255,0.25);
+ border-radius: 999px;
+ position: relative;
+ flex-shrink: 0;
+ transition: background 0.3s;
+ }
+ .toggle-knob {
+ width: 18px;
+ height: 18px;
+ background: #fff;
+ border-radius: 50%;
+ position: absolute;
+ top: 3px;
+ left: 3px;
+ transition: transform 0.3s;
+ box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+ }
+ body.dark .toggle-track { background: #f59e0b; }
+ body.dark .toggle-knob { transform: translateX(18px); }

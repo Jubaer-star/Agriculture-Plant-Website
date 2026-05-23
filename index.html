@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Botanica — Plant Encyclopedia of Bangladesh</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="navbar.css">
+<link rel="stylesheet" href="herosec.css">
+<link rel="stylesheet" href="plantGrid.css">
+<link rel="stylesheet" href="footer.css">
+<link rel="stylesheet" href="register.css">
+<link rel="stylesheet" href="darkMode.css">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="login.css">
+<link rel="stylesheet" href="dataManagement.css">
+<link rel="stylesheet" href="plantModel.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+ <div class="nav-brand"> <span>Botanica</span></div>
+ <button class="nav-toggle" id="navToggle" onclick="toggleNav()"></button>
+ <ul class="nav-links" id="navLinks">
+ <li><a href="#" onclick="navScrollTo('home');return false;" class="active">Home</a></li>
+ <li><a href="#" onclick="navScrollTo('encyclopedia');return false;">Encyclopedia</a></li>
+ <li><a href="#" onclick="navScrollTo('facts');return false;">Did You Know</a></li>
+ <li><a href="#" onclick="navScrollTo('dataPanel');return false;">My Data</a></li>
+ <li><a href="#" onclick="navScrollTo('contact');return false;">Contact</a></li>
+ </ul>
+ <div style="display:flex;align-items:center;gap:10px;">
+ <button class="dark-toggle" id="darkToggleBtn" onclick="toggleDark()"><div class="toggle-track"><div class="toggle-knob"></div></div></button>
+ <div id="navAuthArea">
+ <button class="nav-login-btn" onclick="openAuth()"> Login</button>
+ </div>
+ </div>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+ <div class="hero-badge"> Less Carbon, More Compassion</div>
+ <h1 class="hero-title">Plants of <em>Bangladesh</em></h1>
+ <p class="hero-sub">A comprehensive digital encyclopedia of 100 native and cultivated plants of Bangladesh — explore botanical details, medicinal uses, habitat, and cultural significance.</p>
+ <div class="hero-actions">
+ <button class="btn-primary" onclick="navScrollTo('encyclopedia')"> Explore Plants</button>
+ </div>
+ <div class="hero-stats">
+ <div class="stat"><span class="stat-num">100</span><span class="stat-label">Plants</span></div>
+ <div class="stat"><span class="stat-num">8</span><span class="stat-label">Categories</span></div>
+ <div class="stat"><span class="stat-num">64</span><span class="stat-label">Districts</span></div>
+ <div class="stat"><span class="stat-num">∞</span><span class="stat-label">Knowledge</span></div>
+ </div>
+ <div class="hero-img-row">
+ <span class="hero-chip"> Trees</span>
+ <span class="hero-chip"> Herbs</span>
+ <span class="hero-chip"> Flowers</span>
+ <span class="hero-chip"> Fruits</span>
+ <span class="hero-chip"> Crops</span>
+ <span class="hero-chip"> Medicinal</span>
+ <span class="hero-chip"> Shrubs</span>
+ <span class="hero-chip"> Vines</span>
+ </div>
+</section>
+
+<!-- STYLE TOGGLE -->
+<div class="style-toggle-bar">
+ <span style="color:rgba(255,255,255,0.5);font-size:0.82rem;align-self:center;">Theme:</span>
+ <button class="style-btn active" onclick="setTheme('default',this)"> Forest</button>
+ <button class="style-btn" onclick="setTheme('golden',this)"> Golden</button>
+ <button class="style-btn" onclick="setTheme('ocean',this)"> Ocean</button>
+ <button class="style-btn" onclick="setTheme('earth',this)"> Earth</button>
+</div>
+
+<!-- ENCYCLOPEDIA -->
+<section id="encyclopedia" class="section" style="background:#f9fafb;">
+ <h2 class="section-title">Plant Encyclopedia</h2>
+ <div class="section-divider"></div>
+ <p class="section-sub">Browse, search, and filter 100 Bangladeshi plants with detailed botanical information.</p>
+
+ <div class="search-bar-wrap">
+ <div class="search-input-wrap">
+ <input type="text" id="searchInput" placeholder="Search by name, use, or keyword…" oninput="filterPlants()">
+ 
+ </div>
+ <select class="filter-dropdown" id="categoryFilter" onchange="filterPlants()">
+ <option value="">All Categories</option>
+ <option value="tree"> Trees</option>
+ <option value="herb"> Herbs</option>
+ <option value="fruit"> Fruit Trees</option>
+ <option value="crop"> Crops</option>
+ <option value="flower"> Flowers</option>
+ <option value="medicinal"> Medicinal</option>
+ <option value="vine"> Vines</option>
+ </select>
+ </div>
+
+ <div class="results-info" id="resultsInfo">Showing all 100 plants</div>
+ <div class="plants-grid" id="plantsGrid"></div>
+ <div class="no-results hidden" id="noResults"> No plants found matching your search.</div>
+ <div class="pagination" id="pagination"></div>
+</section>
+
+<!-- DID YOU KNOW -->
+<section id="facts" class="section">
+ <h2 class="section-title">Did You Know?</h2>
+ <div class="section-divider"></div>
+ <p class="section-sub" style="color:rgba(255,255,255,0.6)">Fascinating facts about Bangladeshi flora</p>
+
+ <div class="fact-cards-grid reveal">
+ <div class="fact-card">
+ 
+ <p class="fact-text">Bangladesh has over <strong>5,000</strong> plant species, of which hundreds are found nowhere else on Earth.</p>
+ </div>
+ <div class="fact-card">
+ 
+ <p class="fact-text">The Sundarbans — world's largest mangrove — hosts the famous <strong>Sundari tree</strong> (Heritiera fomes), giving the forest its name.</p>
+ </div>
+ <div class="fact-card">
+ 
+ <p class="fact-text">The <strong>White Water Lily (Shapla)</strong> is Bangladesh's national flower, blooming across rivers and ponds every monsoon season.</p>
+ </div>
+ <div class="fact-card">
+ 
+ <p class="fact-text">The <strong>Jackfruit (Kanthal)</strong> is Bangladesh's national fruit — a single fruit can weigh up to 55 kg!</p>
+ </div>
+ <div class="fact-card">
+ 
+ <p class="fact-text">Bangladesh is one of the world's top <strong>rice producers</strong>, cultivating over 7,000 rice varieties adapted to different flood levels.</p>
+ </div>
+ <div class="fact-card">
+ 
+ <p class="fact-text">Over <strong>500 medicinal plants</strong> are used in traditional Ayurvedic and Unani medicine practices across Bangladesh's villages.</p>
+ </div>
+ <div class="fact-card">
+ 
+ <p class="fact-text"><strong>Neem (Nim)</strong> is called "village pharmacy" — nearly every part of the tree has medicinal value in Bangladeshi folk medicine.</p>
+ </div>
+ <div class="fact-card">
+ 
+ <p class="fact-text">The <strong>bamboo forests</strong> of the Chittagong Hill Tracts are among the most diverse in South Asia, with 31+ bamboo species.</p>
+ </div>
+ </div>
+
+ <!-- Counter -->
+ <div style="margin-top:3rem;">
+ <h3 style="font-family:'Playfair Display',serif;color:white;text-align:center;font-size:1.4rem;margin-bottom:0.5rem;">Plant Discovery Counter</h3>
+ <p style="text-align:center;color:rgba(255,255,255,0.5);font-size:0.88rem;margin-bottom:1.5rem;">How many plants have you explored today?</p>
+ <div class="counter-wrap">
+ <div class="counter-box">
+ <span class="counter-num" id="counterNum">0</span>
+ <div class="counter-lbl">Plants Explored</div>
+ </div>
+ <div class="counter-box">
+ <span class="counter-num" id="sessionNum">0</span>
+ <div class="counter-lbl">This Session</div>
+ </div>
+ </div>
+ <div class="counter-btns">
+ <button class="counter-btn inc" onclick="changeCounter(1)">+ Add One</button>
+ <button class="counter-btn inc" onclick="changeCounter(5)">+ Add Five</button>
+ <button class="counter-btn dec" onclick="changeCounter(-1)">− Remove</button>
+ <button class="counter-btn rst" onclick="resetCounter()"> Reset</button>
+ </div>
+ </div>
+</section>
+
+
+
+<!-- CONTACT / ABOUT -->
+<section id="contact" class="section" style="background:white;">
+ <h2 class="section-title">About This Project</h2>
+ <div class="section-divider"></div>
+ <p class="section-sub">University Project</p>
+ <div style="max-width:700px;margin:0 auto;text-align:center;">
+ <div style="font-size:3.5rem;margin-bottom:1rem;"></div>
+ <p style="font-size:1rem;color:var(--text-mid);line-height:1.8;margin-bottom:1.5rem;">This website was developed as a university agriculture project to create a comprehensive digital resource about the plants of Bangladesh. It covers 100 plants spanning trees, herbs, crops, fruits, medicinal plants and ornamentals found across Bangladesh's diverse ecosystems.</p>
+ <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+ <div style="background:var(--green-pale);padding:1rem 1.5rem;border-radius:var(--radius);min-width:160px;">
+ <div style="font-size:1.5rem;"></div>
+ <div style="font-size:0.8rem;color:var(--text-muted);margin-top:4px;">Department of Computer Science & Engineering </div>
+ </div>
+ <div style="background:var(--green-pale);padding:1rem 1.5rem;border-radius:var(--radius);min-width:160px;">
+ <div style="font-size:1.5rem;"></div>
+ <div style="font-size:0.8rem;color:var(--text-muted);margin-top:4px;">Academic Session Fall-25</div>
+ </div>
+ <div style="background:var(--green-pale);padding:1rem 1.5rem;border-radius:var(--radius);min-width:160px;">
+ <div style="font-size:1.5rem;"></div>
+ <div style="font-size:0.8rem;color:var(--text-muted);margin-top:4px;">100 Plant Profiles</div>
+ </div>
+ </div>
+ </div>
+</section>
+
+<!-- DATA MANAGEMENT -->
+<section id="dataPanel" class="section">
+ <h2 class="section-title">My Plant Data</h2>
+ <div class="section-divider"></div>
+ <p class="section-sub">Store, view, update and delete your personal plant notes and bookmarks.</p>
+
+ <div style="max-width:1100px;margin:0 auto;">
+ <div class="data-panel reveal">
+ <!-- Header -->
+ <div class="data-panel-header">
+ <span class="data-panel-title"> Personal Plant Notes</span>
+ <span class="data-panel-count" id="dataCount">0 records</span>
+ </div>
+
+ <!-- Add Record Form -->
+ <div class="data-form-row">
+ <div>
+ <label class="data-input" style="padding:0;border:none;background:none;font-size:0.75rem;font-weight:600;color:var(--text-muted);margin-bottom:4px;display:block;">Plant Name</label>
+ <input class="data-input" type="text" id="dPlantName" placeholder="e.g. Mango">
+ </div>
+ <div>
+ <label class="data-input" style="padding:0;border:none;background:none;font-size:0.75rem;font-weight:600;color:var(--text-muted);margin-bottom:4px;display:block;">Category</label>
+ <select class="data-input" id="dCategory">
+ <option value="">— Category —</option>
+ <option>Fruit</option><option>Vegetable</option><option>Herb</option>
+ <option>Tree</option><option>Flower</option><option>Medicinal</option><option>Crop</option>
+ </select>
+ </div>
+ <div>
+ <label class="data-input" style="padding:0;border:none;background:none;font-size:0.75rem;font-weight:600;color:var(--text-muted);margin-bottom:4px;display:block;">Note / Observation</label>
+ <input class="data-input" type="text" id="dNote" placeholder="Add a note about this plant…">
+ </div>
+ <button class="data-add-btn" onclick="addDataRecord()"> Add Record</button>
+ </div>
+
+ <!-- Filter Row -->
+ <div class="data-filter-row">
+ <input class="data-input data-search" type="text" id="dataSearch" placeholder=" Search your records…" oninput="renderDataTable()">
+ <button class="data-export-btn" onclick="exportDataCSV()"> Export CSV</button>
+ <button class="data-export-btn" style="color:#ef4444;border-color:#ef4444;" onclick="clearAllData()"> Clear All</button>
+ </div>
+
+ <!-- Table -->
+ <div class="data-table-wrap">
+ <table class="data-table">
+ <thead>
+ <tr>
+ <th>#</th>
+ <th>Plant Name</th>
+ <th>Category</th>
+ <th>Note</th>
+ <th>Date Saved</th>
+ <th>Status</th>
+ <th>Actions</th>
+ </tr>
+ </thead>
+ <tbody id="dataTableBody">
+ <tr><td colspan="7"><div class="data-empty"> No records yet. Add your first plant note above!</div></td></tr>
+ </tbody>
+ </table>
+ </div>
+ </div>
+ </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+ <div class="footer-grid">
+ <div>
+ <div class="footer-brand"> <span>Botanica</span></div>
+ <p class="footer-desc">A digital botanical encyclopedia of Bangladesh's rich plant heritage — built for students, researchers, and nature lovers.</p>
+ <p style="font-size:0.8rem;color:rgba(255,255,255,0.3);">University Agriculture Project · 2025–26</p>
+ </div>
+ <div>
+ <div class="footer-h">Navigate</div>
+ <ul class="footer-links">
+ <li><a href="#" onclick="navScrollTo('home');return false;">Home</a></li>
+ <li><a href="#" onclick="navScrollTo('encyclopedia');return false;">Encyclopedia</a></li>
+ <li><a href="#" onclick="navScrollTo('facts');return false;">Facts</a></li>
+ <li><a href="#" onclick="navScrollTo('register');return false;">Register</a></li>
+ </ul>
+ </div>
+ <div>
+ <div class="footer-h">Categories</div>
+ <ul class="footer-links">
+ <li><a> Trees</a></li>
+ <li><a> Herbs</a></li>
+ <li><a> Fruits</a></li>
+ <li><a> Crops</a></li>
+ <li><a> Medicinal</a></li>
+ </ul>
+ </div>
+ </div>
+ <div class="footer-bottom">
+ <p>© 2026 Botanica · Made with for Bangladesh's Green Heritage · University Agriculture Project</p>
+ </div>
+</footer>
+
+<!-- AUTH OVERLAY -->
+<div class="auth-overlay" id="authOverlay" onclick="closeAuthOutside(event)">
+ <div class="login-card">
+ <button class="auth-close" onclick="closeAuth()"></button>
+ <div class="login-title" id="authTitle"> Welcome Back</div>
+ <p class="login-sub" id="authSub">Sign in to manage your plant data and bookmarks.</p>
+ <div class="auth-tabs">
+ <button class="auth-tab active" id="tabLogin" onclick="switchAuth('login')"> Login</button>
+ <button class="auth-tab" id="tabSignup" onclick="switchAuth('signup')"> Sign Up</button>
+ </div>
+
+ <!-- Login Panel -->
+ <div class="auth-panel active" id="loginPanel">
+ <input class="auth-input" type="text" id="loginUser" placeholder="Username or Email">
+ <div style="position:relative;">
+ <input class="auth-input" type="password" id="loginPass" placeholder="Password" style="padding-right:44px;">
+ <button type="button" onclick="togglePw('loginPass')" style="position:absolute;right:12px;top:11px;background:none;border:none;cursor:pointer;font-size:1rem;"></button>
+ </div>
+ <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;">
+ <label style="display:flex;align-items:center;gap:6px;font-size:0.82rem;cursor:pointer;">
+ <input type="checkbox" id="rememberMe"> Remember me
+ </label>
+ <span style="font-size:0.82rem;color:var(--green-mid);cursor:pointer;" onclick="showForgotMsg()">Forgot password?</span>
+ </div>
+ <button class="auth-btn" onclick="doLogin()">Login →</button>
+ <div class="auth-msg" id="loginMsg"></div>
+ </div>
+
+ <!-- Signup Panel -->
+ <div class="auth-panel" id="signupPanel">
+ <input class="auth-input" type="text" id="signupName" placeholder="Full Name">
+ <input class="auth-input" type="text" id="signupEmail" placeholder="Email Address">
+ <input class="auth-input" type="text" id="signupUser2" placeholder="Choose Username">
+ <div style="position:relative;">
+ <input class="auth-input" type="password" id="signupPass" placeholder="Create Password (min 6 chars)" style="padding-right:44px;">
+ <button type="button" onclick="togglePw('signupPass')" style="position:absolute;right:12px;top:11px;background:none;border:none;cursor:pointer;font-size:1rem;"></button>
+ </div>
+ <button class="auth-btn" onclick="doSignup()">Create Account →</button>
+ <div class="auth-msg" id="signupMsg"></div>
+ </div>
+ </div>
+</div>
+
+<!-- PLANT MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+ <div class="modal" id="plantModal">
+ <button class="modal-close" onclick="closeModalDirect()"></button>
+ <div class="modal-header">
+ <div class="modal-emoji" id="mEmoji"></div>
+ <div class="modal-header-text">
+ <div class="modal-name" id="mName"></div>
+ <div class="modal-sci" id="mSci"></div>
+ <div class="plant-tags" id="mTags"></div>
+ </div>
+ </div>
+ <div class="modal-body">
+ <!-- Tabs -->
+ <div class="modal-tabs">
+ <button class="modal-tab active" onclick="switchTab(0)"> Overview</button>
+ <button class="modal-tab" onclick="switchTab(1)"> Production</button>
+ <button class="modal-tab" onclick="switchTab(2)"> Varieties</button>
+ <button class="modal-tab" onclick="switchTab(3)"> Care Guide</button>
+ <button class="modal-tab" onclick="switchTab(4)"> Cure & Remedy</button>
+ </div>
+
+ <!-- TAB 0: Overview -->
+ <div class="modal-tab-panel active" id="mTab0">
+ <div class="modal-grid">
+ <div class="modal-info-card"><div class="modal-info-label">Bengali Name</div><div class="modal-info-val" id="mBengali"></div></div>
+ <div class="modal-info-card"><div class="modal-info-label">Family</div><div class="modal-info-val" id="mFamily"></div></div>
+ <div class="modal-info-card"><div class="modal-info-label">Habitat</div><div class="modal-info-val" id="mHabitat"></div></div>
+ <div class="modal-info-card"><div class="modal-info-label">Flowering/Fruiting</div><div class="modal-info-val" id="mSeason"></div></div>
+ <div class="modal-info-card"><div class="modal-info-label">Height</div><div class="modal-info-val" id="mHeight"></div></div>
+ <div class="modal-info-card"><div class="modal-info-label">Distribution</div><div class="modal-info-val" id="mDist"></div></div>
+ </div>
+ <div class="modal-section-title"> Description</div>
+ <p class="modal-desc" id="mDesc"></p>
+ <div class="modal-section-title"> Uses &amp; Benefits</div>
+ <p class="modal-uses" id="mUses"></p>
+ <div class="modal-section-title"> Conservation Status</div>
+ <p class="modal-desc" id="mConservation"></p>
+ </div>
+
+ <!-- TAB 1: Production -->
+ <div class="modal-tab-panel" id="mTab1">
+ <div class="prod-grid" id="mProdGrid"></div>
+ </div>
+
+ <!-- TAB 2: Varieties -->
+ <div class="modal-tab-panel" id="mTab2">
+ <p style="font-size:0.88rem;color:var(--text-muted);margin-bottom:0.25rem;" id="mVarietyCount"></p>
+ <div class="variety-grid" id="mVarietyGrid"></div>
+ </div>
+
+ <!-- TAB 3: Care Guide -->
+ <div class="modal-tab-panel" id="mTab3">
+ <div class="care-steps" id="mCareSteps"></div>
+ </div>
+
+ <!-- TAB 4: Cure & Remedy -->
+ <div class="modal-tab-panel" id="mTab4">
+ <div class="cure-steps" id="mCureSteps"></div>
+ </div>
+ </div>
+ </div>
+</div>
+
+<script src="data.js"></script>
+<script src="main.js"></script>
+<script src="render.js"></script>
+<script src="model.js"></script>
+<script src="auth.js"></script>
+<script src="dataManager.js"></script>
+<script>
+  filtered = [...plants];
+  renderPlants();
+  renderDataTable();
+  restoreSession();
+  // Mark all reveal elements visible immediately
+  document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+</script>
+</body>
+</html>
